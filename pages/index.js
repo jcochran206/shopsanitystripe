@@ -6,7 +6,8 @@ import { CLIENT_STATIC_FILES_RUNTIME_REACT_REFRESH } from 'next/dist/shared/lib/
 const Home = ({products, bannerData}) => {
   return (
     <>
-    <HeroBanner heroBanner={bannerData} />
+    <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+    {console.log(bannerData)}
 
     <div>
       <h2 className='products-heading'>Best selling Products</h2>
