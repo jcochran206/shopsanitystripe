@@ -1,11 +1,12 @@
 import React from 'react'
-
+import {client} from '../lib/client';
 import {Product, FooterBanner, HeroBanner} from '../components'
+import { CLIENT_STATIC_FILES_RUNTIME_REACT_REFRESH } from 'next/dist/shared/lib/constants';
 
-const Home = () => {
+const Home = ({products, bannerData}) => {
   return (
     <>
-    <HeroBanner/>
+    <HeroBanner heroBanner={bannerData} />
 
     <div>
       <h2 className='products-heading'>Best selling Products</h2>
@@ -13,12 +14,30 @@ const Home = () => {
     </div>
 
     <div className='products-container'>
-      {['Product 1', 'Product 2'].map((product) => product)}
+      {products?.map((product) => product.name)}
     </div>
 
     <FooterBanner/>
     </>
   )
+}
+
+
+/* 
+nextjs specific required call
+key note for react js
+react would useEffect to pull from api using either fetch or axios
+*/
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    props: {products, bannerData}
+  }
 }
 
 export default Home
