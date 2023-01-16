@@ -250,6 +250,8 @@ text-align: end;
   left: 8%; */
   top: -25%;
   left: 25%;
+  width: 380px;
+  height: 380px;
 }
 .banner-desc .right{
   line-height: 1.4;
