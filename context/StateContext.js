@@ -1,9 +1,9 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import { toast } from 'react-hot-toast';
 
-const Context = createContext();
+const Context = React.createContext();
 
-export const StateContext = ({ childern }) => {
+export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
@@ -35,7 +35,7 @@ export const StateContext = ({ childern }) => {
             decreaseQty,
             }}
         >
-            {childern}
+            {children}
         </Context.Provider>
     )
 }
