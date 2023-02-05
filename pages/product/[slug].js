@@ -8,7 +8,7 @@ import {client, urlFor} from '../../lib/client';
 const ProductDetails = ({product, products}) => {
      const { image, name, details, price } = product;
      const [index, setIndex] = useState(0);
-     const {decreaseQty, increaseQty, qty} = useStateContext();
+     const {decQty, incQty, qty, onAdd} = useStateContext();
 
   return (
     <div>
@@ -44,13 +44,13 @@ const ProductDetails = ({product, products}) => {
                   <div className='quantity'>
                     <h3>Quantity:</h3>
                     <p className='quantity-desc'>
-                      <span className='minus' onClick={decreaseQty}><AiOutlineMinus/></span>
+                      <span className='minus' onClick={decQty}><AiOutlineMinus/></span>
                       <span className='num' onClick=''>{qty}</span>
-                      <span className='plus' onClick={increaseQty}><AiOutlinePlus/></span>
+                      <span className='plus' onClick={incQty}><AiOutlinePlus/></span>
                     </p>
                   </div>
                   <div className='buttons'>
-                    <button type="button" className='add-to-cart' onClick="">Add to Cart</button>
+                    <button type="button" className='add-to-cart' onClick={() => onAdd(product, qty)}>Add to Cart</button>
                     <button type="button" className='buy-now' onClick="">Buy Now</button>
                   </div>
                 </div>
