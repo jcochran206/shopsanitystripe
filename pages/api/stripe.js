@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-//const stripe = require(Stripe)(process.env.STRIPE_SECRET_KEY);
+// utilize stripe information default is 4242 repeating for testing to accept
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res){
