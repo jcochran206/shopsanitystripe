@@ -24,6 +24,6 @@ NextJS application with Sanity backend integration
 Jonathan Cochran 2023
 
 ## Live Site
-
+[]
 
 
